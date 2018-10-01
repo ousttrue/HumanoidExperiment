@@ -17,7 +17,10 @@ namespace HumanoidExperiment
         [SerializeField]
         Button m_openButton;
 
-        public HumanPoseTransfer m_transfer;
+        [SerializeField]
+        HumanPoseTransfer m_dst;
+
+        HumanPoseTransfer m_src;
 
         UnityAction m_onClick;
 
@@ -77,7 +80,10 @@ namespace HumanoidExperiment
 
             m_context.Load();
 
-            m_transfer = m_context.Root.AddComponent<HumanPoseTransfer>();
+            m_src = m_context.Root.AddComponent<HumanPoseTransfer>();
+
+            m_dst.SourceType = HumanPoseTransfer.HumanPoseTransferSourceType.HumanPoseTransfer;
+            m_dst.Source = m_src;
         }
     }
 }
